@@ -1,0 +1,74 @@
+level: 0
+combination: 0 0 0 0 0
+profit:	0
+weight:	0
+bound:	100
+
+level: 1
+combination: 1 0 0 0 0
+profit:	20
+weight:	2
+bound:	100
+
+level: 2
+combination: 1 1 0 0 0
+profit:	50
+weight:	7
+bound:	100
+
+level: 3
+combination: 1 1 1 0 0
+profit:	85
+weight:	14
+bound:	100
+
+level: 4
+combination: 1 1 1 1 0
+profit:	97
+weight:	17
+bound:	100
+
+level: 5
+combination: 1 1 1 1 1
+profit:	100
+weight:	18
+bound:	100
+This node is unpromising
+
+level: 5
+combination: 1 1 1 1 0
+profit:	97
+weight:	17
+bound:	97
+This node is unpromising
+
+level: 4
+combination: 1 1 1 0 0
+profit:	85
+weight:	14
+bound:	88
+This node is unpromising
+
+level: 3
+combination: 1 1 0 0 0
+profit:	50
+weight:	7
+bound:	65
+This node is unpromising
+
+level: 2
+combination: 1 0 0 0 0
+profit:	20
+weight:	2
+bound:	70
+This node is unpromising
+
+level: 1
+combination: 0 0 0 0 0
+profit:	0
+weight:	0
+bound:	80
+This node is unpromising
+
+greatest profit obtained: 100
+indexes of items in the knapsack: 1 2 3 4 5
