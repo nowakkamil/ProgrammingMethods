@@ -21,13 +21,13 @@ int main()
 	while (sets > 0)
 	{
 		get_variable_from_file(length, fin);
-		unsigned long * array = create_unsigned_long_array(length);
-		load_unsigned_long_array_from_file(array, length, fin);
+		unsigned long * arrayOfValues = create_array<unsigned long>(length);
+		load_array_from_file(arrayOfValues, length, fin);
 
-		quicksort(array, length, 0, length - 1);
-		unsigned_long_array_to_file_single_line(array, length, fout);
+		quicksort(arrayOfValues, length, 0, length - 1);
+		array_to_file_single_line(arrayOfValues, length, fout);
 
-		delete[] array;
+		delete[] arrayOfValues;
 		--sets;
 	}
 
@@ -37,7 +37,7 @@ int main()
 	return 0;
 }
 
-void quicksort(unsigned long * array, int length, int left_index, int right_index)
+void quicksort(unsigned long * arrayOfValues, int length, int left_index, int right_index)
 {
 	int auxiliary_index = 0;
 
@@ -45,7 +45,7 @@ void quicksort(unsigned long * array, int length, int left_index, int right_inde
 	{
 		if (left_index < right_index)
 		{
-			right_index = partition(array, left_index, right_index);
+			right_index = partition(arrayOfValues, left_index, right_index);
 			++auxiliary_index;
 		}
 
@@ -64,20 +64,20 @@ void quicksort(unsigned long * array, int length, int left_index, int right_inde
 	}
 }
 
-int partition(unsigned long * array, int first_index, int last_index)
+int partition(unsigned long * arrayOfValues, int first_index, int last_index)
 {
-	unsigned long auxiliary_value = *(array + last_index);
+	unsigned long auxiliary_value = *(arrayOfValues + last_index);
 	int left_index = first_index - 1;
 
 	for (int right_index = first_index; right_index < last_index; right_index++)
 	{
-		if (*(array + right_index) <= auxiliary_value)
+		if (*(arrayOfValues + right_index) <= auxiliary_value)
 		{
 			++left_index;
-			swap(*(array + left_index), *(array + right_index));
+			swap(*(arrayOfValues + left_index), *(arrayOfValues + right_index));
 		}
 	}
 
-	swap(*(array + left_index + 1), *(array + last_index));
+	swap(*(arrayOfValues + left_index + 1), *(arrayOfValues + last_index));
 	return left_index;
 }

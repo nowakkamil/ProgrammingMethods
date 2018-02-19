@@ -54,10 +54,10 @@ int main()
 
 	compute_solutions(greatestValue, chosenItem, items, capacity, sentinel);
 
-	irregular_two_dimensional_vector_to_file_rows_in_single_line(greatestValue, fout);
+	two_dimensional_vector_to_file_rows_in_single_line(greatestValue, fout);
 	fout << endl;
 
-	irregular_two_dimensional_vector_to_file_rows_in_single_line(chosenItem, fout);
+	two_dimensional_vector_to_file_rows_in_single_line(chosenItem, fout);
 	fout << endl;
 
 	fin.close();

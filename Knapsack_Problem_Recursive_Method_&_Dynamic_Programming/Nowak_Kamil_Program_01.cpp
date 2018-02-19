@@ -28,7 +28,7 @@ int main()
 		constCapacity = capacity;
 		get_variable_from_file_up_to_million(numOfElements, fin);
 
-		int * items = create_array(numOfElements);
+		int * items = create_array<int>(numOfElements);
 
 		for (int secondSentry = 0, auxiliaryValue; secondSentry < numOfElements; ++secondSentry)
 		{
@@ -65,7 +65,7 @@ int & targetCapacity, const int & constCapacity, ofstream & fout)
 		solutions_vector.push_back(*(items + auxiliaryValue));
 
 		fout << constCapacity << " = ";
-		vector_to_file_row_in_single_line(solutions_vector, fout);
+		vector_to_file_rows_in_single_line(solutions_vector, fout);
 
 		return;
 	}

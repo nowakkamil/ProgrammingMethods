@@ -38,7 +38,7 @@ int main()
 	fout << endl;
 
 	int * degree_of_vertex = calculate_degree_of_vertex(incidence_matrix, rows);
-	one_column_array_to_file_multiple_lines_numeration(degree_of_vertex, rows, fout);
+	array_to_file_multiple_lines_numeration(degree_of_vertex, rows, fout);
 
 	fin.close();
 	fout.close();
@@ -129,7 +129,7 @@ void irregular_two_dimensional_vector_to_file_rows_in_single_line(vector<vector<
 
 int * calculate_degree_of_vertex(vector<vector<incidenceList *>> & vector_of_vector_of_list, int rows)
 {
-	int * degree_of_vertex = create_array(rows);
+	int * degree_of_vertex = create_array<int>(rows);
 
 	vector<vector<incidenceList *>>::iterator row;
 	vector<incidenceList *>::iterator column;

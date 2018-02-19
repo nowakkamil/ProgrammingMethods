@@ -3,7 +3,7 @@
 void add_value_to_weight_ratio(vector<vector<double>> &, const int &);
 void knapsack(vector<vector<double>> &, vector<int> &, vector<int> &, int, int, int, const int &, int &, const int &, ofstream &);
 void fill_solutions_vector(vector<vector<double>> &, vector<int> &, vector<int> &);
-bool promising(vector<vector<double>> &, const int &, const int &, const int &, const int &, const int &, const int &, ofstream &);
+bool is_promising(vector<vector<double>> &, const int &, const int &, const int &, const int &, const int &, const int &, ofstream &);
 
 int main()
 {
@@ -49,7 +49,7 @@ int main()
 		}
 	}
 
-	sort_two_dimensional_vector_of_double(items, 3);
+	sort_two_dimensional_vector(items, 3);
 
 	vector<int> included(sentinel, 0);
 	vector<int> solutions;
@@ -59,7 +59,7 @@ int main()
 	knapsack(items, solutions, included, 0, 0, 0, capacity, maxProfit, sentinel, fout);
 
 	fout << endl << "greatest profit obtained: " << maxProfit << endl << "indexes of items in the knapsack: ";
-	vector_to_file_row_in_single_line(solutions, fout);
+	vector_to_file_rows_in_single_line(solutions, fout);
 
 	fin.close();
 	fout.close();
@@ -113,7 +113,7 @@ void knapsack(vector<vector<double>> & items, vector<int> & solutions, vector<in
 	}
 
 	fout << "level: " << level << endl << "combination: ";
-	vector_to_file_row_in_single_line(included, fout);
+	vector_to_file_rows_in_single_line(included, fout);
 
 	if (weight <= possibleWeight && profit > maxProfit)
 	{
@@ -121,7 +121,7 @@ void knapsack(vector<vector<double>> & items, vector<int> & solutions, vector<in
 		fill_solutions_vector(items, included, solutions);
 	}
 
-	if (promising(items, level, profit, weight, possibleWeight, maxProfit, numOfElementsConsidered, fout) == true)
+	if (is_promising(items, level, profit, weight, possibleWeight, maxProfit, numOfElementsConsidered, fout) == true)
 	{
 		included[level] = 1;
 		knapsack(items, solutions, included, ++level, profit + items[level - 1][1], weight + items[level - 1][2], possibleWeight, maxProfit, numOfElementsConsidered, fout);
@@ -173,7 +173,7 @@ void fill_solutions_vector(vector<vector<double>> & items, vector<int> & include
 * @param	numOfElementsConsidered	number of all elements which are to be considered
 * @param	fout					object of ofstream class which writes a data to the file
 */
-bool promising(vector<vector<double>> & items, const int & level, const int & profit, const int & weight, const int & possibleWeight, const int & maxProfit, const int & numOfElementsConsidered, ofstream & fout)
+bool is_promising(vector<vector<double>> & items, const int & level, const int & profit, const int & weight, const int & possibleWeight, const int & maxProfit, const int & numOfElementsConsidered, ofstream & fout)
 {
 	int firstIndex, secondIndex, totalWeight;
 	double bound;

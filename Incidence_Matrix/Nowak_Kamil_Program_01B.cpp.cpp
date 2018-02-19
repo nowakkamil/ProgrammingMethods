@@ -31,7 +31,7 @@ int main()
 	fill_adjacent_vertices(incidence_matrix, adjacent_vertices, rows, columns);
 
 	two_dimensional_vector_to_file_rows_in_single_line_negative_numbers(incidence_matrix, fout);
-	irregular_two_dimensional_vector_to_file_rows_in_single_line(adjacent_vertices, fout);
+	two_dimensional_vector_to_file_rows_in_single_line(adjacent_vertices, fout);
 
 	fin.close();
 	fout.close();

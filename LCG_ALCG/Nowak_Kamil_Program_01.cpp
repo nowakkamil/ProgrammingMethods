@@ -80,9 +80,9 @@ int main()
 
 		get_c(c, m);
 
-		int * first_array = create_array(numOfPseudorandoms);
+		int * first_array = create_array<int>(numOfPseudorandoms);
 		first_array = LCG_array(m, a, c, lmax, x0, numOfPseudorandoms);
-		int * second_array = create_array(numOfPseudorandoms);
+		int * second_array = create_array<int>(numOfPseudorandoms);
 
 		copy_array(second_array, first_array, numOfPseudorandoms);
 		reverse_array(second_array, numOfPseudorandoms);
@@ -113,7 +113,7 @@ void get_c(int & c, int m)
 int * LCG_array(int m, int a, int c, int lmax, int x0, int numOfPseudorandoms)
 {
 	//	(m - 2) - number of possibilites in choosing a
-	int * lambda = create_array(m - 2);
+	int * lambda = create_array<int>(m - 2);
 
 	for (int i = a; i < m; ++i)
 	{
@@ -147,7 +147,7 @@ int * LCG_array(int m, int a, int c, int lmax, int x0, int numOfPseudorandoms)
 	if (lmax_instances > 1)
 	{
 		//	array storing maximum a values for the greatest and at the same time equal l values
-		int * amax = create_array(lmax_instances);
+		int * amax = create_array<int>(lmax_instances);
 
 		//	last comparison is executed for lmax_index = 1
 		for (int sentinel = 0; lmax_index >= 0; --lmax_index)
@@ -263,7 +263,7 @@ bool find_pfactor(int m, int & num_p_factors)		//	searching for the m's factors 
 
 int * fill_pfactor(int m, int num_p_factors)
 {
-	int * pfactor = create_array(num_p_factors);
+	int * pfactor = create_array<int>(num_p_factors);
 
 	for (int sentinel = 0, i = 2; i < m; ++i)
 	{
@@ -280,7 +280,7 @@ int * fill_pfactor(int m, int num_p_factors)
 
 int * generate_array(int m, int a, int c, int x0, int numOfPseudorandoms)
 {
-	int * array = create_array(numOfPseudorandoms);
+	int * array = create_array<int>(numOfPseudorandoms);
 	*(array) = x0;
 
 	for (int i = 1; i < numOfPseudorandoms; ++i)
@@ -313,7 +313,7 @@ void proper_indexes(struct values & indexes, int numOfPseudorandoms)
 		++sentinel;
 	}
 
-	int ** possible_pairs = create_two_dimensional_array(sentinel, 2);
+	int ** possible_pairs = create_two_dimensional_array<int>(sentinel, 2);
 	sentinel = 0;
 
 	while (pairs[sentinel][1] < numOfPseudorandoms + 1)
@@ -345,9 +345,9 @@ void proper_indexes(struct values & indexes, int numOfPseudorandoms)
 
 int * calculate_candidate_value(int ** array, int length, int middle)
 {
-	int * candidates_values = create_array(length);
+	int * candidates_values = create_array<int>(length);
 	fill_array_with_value(candidates_values, length, 0);
-	int ** auxiliary_array = create_two_dimensional_array(length, 2);
+	int ** auxiliary_array = create_two_dimensional_array<int>(length, 2);
 	copy_two_dimensional_array(auxiliary_array, array, length, 2);
 
 	for (int sentinel = 0; sentinel < length; ++sentinel)

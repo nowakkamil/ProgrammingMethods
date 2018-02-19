@@ -21,7 +21,7 @@ int main()
 	int rows, columns;
 	get_variable_from_file(columns, fin);
 	rows = valid_num_of_rows(columns, fin);
-	int ** incidence_matrix = create_two_dimensional_array(rows, columns);
+	int ** incidence_matrix = create_two_dimensional_array<int>(rows, columns);
 	fill_two_dimensional_array_with_value(incidence_matrix, rows, columns, 0);
 
 	fin.ignore(1);
@@ -29,7 +29,7 @@ int main()
 
 	int ** adjacent_vertices = nullptr;
 	adjacent_vertices = new int *[rows];
-	int * array_of_columns = create_array(rows);
+	int * array_of_columns = create_array<int>(rows);
 	fill_array_with_value(array_of_columns, rows, 0);
 
 	fill_array_of_columns(incidence_matrix, adjacent_vertices, array_of_columns, rows, columns);
