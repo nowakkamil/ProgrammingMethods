@@ -1,6 +1,6 @@
 #include "own_library.h"
 
-// variables wchich are used continually in the functions
+// variables which are used continually in the functions
 int sentinel = 0, secondSentinel = 0, thirdSentinel = 0, starter = 0, auxiliaryValue = 0;
 
 void assign_elements(vector<int> &, int * &, int &, int &, const int &, ofstream &);
