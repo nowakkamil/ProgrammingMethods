@@ -30,7 +30,7 @@ int main()
 
 	switch (choice)
 	{
-	//	Linear Congruential Generator
+	// Linear Congruential Generator
 	case '1':
 	{
 		string name = "results_p1.txt";
@@ -58,7 +58,7 @@ int main()
 		break;
 	}
 
-	//	Additive Linear Congruential Generator
+	// Additive Linear Congruential Generator
 	case '2':
 	{
 		string name = "results_p2.txt";
@@ -112,7 +112,7 @@ void get_c(int & c, int m)
 
 int * LCG_array(int m, int a, int c, int lmax, int x0, int numOfPseudorandoms)
 {
-	//	(m - 2) - number of possibilites in choosing a
+	// (m - 2) - number of possibilites in choosing a
 	int * lambda = create_array<int>(m - 2);
 
 	for (int i = a; i < m; ++i)
@@ -122,7 +122,7 @@ int * LCG_array(int m, int a, int c, int lmax, int x0, int numOfPseudorandoms)
 
 	int lmax_index = 0;
 
-	//	(m - 4) - number of comparing operations
+	// (m - 4) - number of comparing operations
 	for (; lmax_index < m - 4; ++lmax_index)
 	{
 		//	searching for lmax
@@ -134,7 +134,7 @@ int * LCG_array(int m, int a, int c, int lmax, int x0, int numOfPseudorandoms)
 
 	int lmax_instances = 1;
 
-	//	last comparison is executed for l = 1
+	// last comparison is executed for l = 1
 	for (int i = lmax_index; i > 0; --i)
 	{
 		if (*(lambda + i) == lmax)
@@ -146,15 +146,15 @@ int * LCG_array(int m, int a, int c, int lmax, int x0, int numOfPseudorandoms)
 
 	if (lmax_instances > 1)
 	{
-		//	array storing maximum a values for the greatest and at the same time equal l values
+		// array storing maximum a values for the greatest and at the same time equal l values
 		int * amax = create_array<int>(lmax_instances);
 
-		//	last comparison is executed for lmax_index = 1
+		// last comparison is executed for lmax_index = 1
 		for (int sentinel = 0; lmax_index >= 0; --lmax_index)
 		{
 			if (*(lambda + lmax_index) == lmax)
 			{
-				//	(lmax_index + 2) - lmax array's index increased by 2 is equal to a
+				// (lmax_index + 2) - lmax array's index increased by 2 is equal to a
 				*(amax + sentinel) = lmax_index + 2;
 				++sentinel;
 			}
@@ -164,7 +164,7 @@ int * LCG_array(int m, int a, int c, int lmax, int x0, int numOfPseudorandoms)
 
 		if (find_pfactor(m, num_p_factors) == true)
 		{
-			//	error handling
+			// error handling
 			int is_valid;
 			int * pfactor = fill_pfactor(m, num_p_factors);
 			is_valid = valid_a(amax, pfactor, lmax_instances, m, num_p_factors);
@@ -180,7 +180,7 @@ int * LCG_array(int m, int a, int c, int lmax, int x0, int numOfPseudorandoms)
 			}
 		}
 
-		//	when any of the assumptions aren't met the greatest a is chosen
+		// when any of the assumptions aren't met the greatest a is chosen
 		else
 		{
 			a = *(amax);
@@ -189,7 +189,7 @@ int * LCG_array(int m, int a, int c, int lmax, int x0, int numOfPseudorandoms)
 		return generate_array(m, a, c, x0, numOfPseudorandoms);
 	}
 
-	//	lmax occurs only once in an array
+	// lmax occurs only once in an array
 	else
 	{
 		a = lmax_index + 2;
@@ -209,7 +209,7 @@ void find_al(int * & lambda, int a, int l, int m)
 
 int valid_a(int * amax_array, int * pfactor, int length, int m, int & num_p_factors)
 {
-	//	loop is being executed unless it finds the greatest a which meets all the assumptions
+	// loop is being executed unless it finds the greatest a which meets all the assumptions
 	for (int i = 0; i < length; ++i)
 	{
 		if (assumptions(pfactor, *(amax_array + i) - 1, m, num_p_factors) == true)
@@ -218,11 +218,12 @@ int valid_a(int * amax_array, int * pfactor, int length, int m, int & num_p_fact
 		}
 	}
 
-	//	when none of the a values meets the assumptions
+	// when none of the a values meets the assumptions
 	return 0;
 }
 
-bool assumptions(int * pfactor, int b, int m, int & num_p_factors)		//	b = (a - 1)
+// b = (a - 1)
+bool assumptions(int * pfactor, int b, int m, int & num_p_factors)
 {
 	for (int i = 0; i < num_p_factors; ++i)
 	{
@@ -240,7 +241,8 @@ bool assumptions(int * pfactor, int b, int m, int & num_p_factors)		//	b = (a - 
 	return true;
 }
 
-bool find_pfactor(int m, int & num_p_factors)		//	searching for the m's factors which are prime numbers
+// searching for the m's factors which are prime numbers
+bool find_pfactor(int m, int & num_p_factors)
 {
 	for (int i = 2; i < m; ++i)
 	{
@@ -269,7 +271,7 @@ int * fill_pfactor(int m, int num_p_factors)
 	{
 		if (i % m == 0 && is_prime(i) == true)
 		{
-			//	filling an array with the factors which meet the assumptions
+			// filling an array with the factors which meet the assumptions
 			*(pfactor + sentinel) = i;
 			++sentinel;
 		}
